@@ -1,5 +1,17 @@
 *,
 *::after,
 *::before {
-    color: #353535;
+	color: #353535;
+}
+
+body::-webkit-scrollbar {
+	width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+	background: rgba(53, 53, 53, 10%);
+}
+
+body::-webkit-scrollbar-thumb {
+	background-color: #353535;
 }
