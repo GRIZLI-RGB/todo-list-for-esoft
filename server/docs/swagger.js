@@ -10,7 +10,7 @@ const doc = {
 		title: "To-Do-List",
 		description: "Пасхалка для компании E-Soft: прочитал, улыбнись :)",
 	},
-	host: "localhost:8000",
+	host: "localhost:8000/api",
 };
 
 const options = {

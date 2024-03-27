@@ -22,9 +22,17 @@ interface ITask {
 
 export default function Task({ title, priority, dueDate, status, description }: ITask) {
 	return (
-		<Card variant={"outline"} cursor={'pointer'} _hover={{borderColor: "rgba(53,53,53,60%)"}}>
+		<Card
+			variant={"outline"}
+			cursor={"pointer"}
+			_hover={{ borderColor: "rgba(53,53,53,60%)" }}
+			size={{ base: "sm", sm: "md" }}>
 			<CardBody>
-				<Flex justify="space-between" align="center">
+				<Flex
+					justify="space-between"
+					align={{ sm: "center", base: "flex-start" }}
+					gap={5}
+					direction={{ base: "column", sm: "row" }}>
 					<Flex align="center" gap={3}>
 						<Heading
 							color={

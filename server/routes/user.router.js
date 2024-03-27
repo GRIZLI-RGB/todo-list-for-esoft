@@ -15,12 +15,12 @@ userRouter.get(
 );
 
 userRouter.get(
-	"/user/:id",
-	authMiddleware,
-	userController.getUserById,
+	"/user/:token",
+	userController.getUserByToken,
 	// #swagger.tags = ['Пользователи']
-	// #swagger.summary = 'Получить пользователя по ID'
+	// #swagger.summary = 'Получить пользователя по токену'
 );
+
 
 userRouter.patch(
 	"/user/:id",

@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost:8000/"
+      "url": "http://localhost:8000/api/"
     }
   ],
   "paths": {
@@ -21,6 +21,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           },
           "500": {
             "description": "Internal Server Error"
@@ -67,6 +70,9 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error"
@@ -255,16 +261,16 @@
         }
       }
     },
-    "/user/{id}": {
+    "/user/{token}": {
       "get": {
         "tags": [
           "Пользователи"
         ],
-        "summary": "Получить пользователя по ID",
+        "summary": "Получить пользователя по токену",
         "description": "",
         "parameters": [
           {
-            "name": "id",
+            "name": "token",
             "in": "path",
             "required": true,
             "schema": {
@@ -283,7 +289,9 @@
             "description": "Internal Server Error"
           }
         }
-      },
+      }
+    },
+    "/user/{id}": {
       "patch": {
         "tags": [
           "Пользователи"

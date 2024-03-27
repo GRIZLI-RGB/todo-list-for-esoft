@@ -35,6 +35,10 @@ const User = sequelize.define("User", {
 		type: DataTypes.INTEGER,
 		defaultValue: null,
 	},
+    is_manager: {
+        type: DataTypes.BOOLEAN,
+		defaultValue: false,
+    }
 });
 
 User.belongsTo(User, { foreignKey: "manager_id" });

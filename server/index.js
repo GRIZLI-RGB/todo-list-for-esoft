@@ -19,7 +19,6 @@ app.use(express.json());
 
 app.use("/api", authRouter, usersRouter, tasksRouter);
 
-
 async function startServer() {
 	try {
 		await db.authenticate();

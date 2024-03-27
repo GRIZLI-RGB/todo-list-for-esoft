@@ -4,7 +4,8 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"dev": "nodemon --ignore docs/swagger-output.json index.js"
+		"dev": "nodemon --ignore docs/swagger-output.json index.js",
+        "prod": "node index.js"
 	},
 	"author": "",
 	"license": "ISC",
