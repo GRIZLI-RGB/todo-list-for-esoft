@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { Navigate, createBrowserRouter } from "react-router-dom";
 
 import Guard from "../components/Guard";
 import NotFound from "../pages/NotFound";
@@ -11,6 +11,7 @@ import AuthLayout from "../layouts/Auth";
 const router = createBrowserRouter([
 	{
 		path: "/",
+        element: <Navigate to="/tasks" replace/>,
 		errorElement: <NotFound />,
 	},
 	{
