@@ -22,14 +22,11 @@ const Task = sequelize.define("Task", {
 		type: DataTypes.ENUM("completed", "in_progress", "to_be_executed", "canceled"),
 		defaultValue: "to_be_executed",
 	},
-	creator_id: {
-		type: DataTypes.INTEGER,
-		allowNull: false,
-	},
-	accountable_id: {
-		type: DataTypes.INTEGER,
-		allowNull: false,
-	},
 });
 
+/* Task.associate = models => {
+	Task.belongsTo(models.User, { foreignKey: "creator_id", as: "creator" });
+	Task.belongsTo(models.User, { foreignKey: "accountable_id", as: "accountable" });
+};
+ */
 export default Task;

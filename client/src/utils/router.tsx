@@ -1,9 +1,12 @@
-import { Outlet, createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 
+import Guard from "../components/Guard";
 import NotFound from "../pages/NotFound";
 import Tasks from "../pages/Tasks";
 import Login from "../pages/Auth/Login";
 import Register from "../pages/Auth/Register";
+
+import AuthLayout from "../layouts/Auth";
 
 const router = createBrowserRouter([
 	{
@@ -12,7 +15,7 @@ const router = createBrowserRouter([
 	},
 	{
 		path: "/auth",
-		element: <Outlet />,
+		element: <AuthLayout />,
 		children: [
 			{
 				path: "login",
@@ -26,7 +29,11 @@ const router = createBrowserRouter([
 	},
 	{
 		path: "/tasks",
-		element: <Tasks />,
+		element: (
+			<Guard>
+				<Tasks />
+			</Guard>
+		),
 	},
 ]);
 

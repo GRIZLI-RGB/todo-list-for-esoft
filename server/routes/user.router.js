@@ -12,6 +12,7 @@ userRouter.get(
 	userController.getAllUsers,
 	// #swagger.tags = ['Пользователи']
 	// #swagger.summary = 'Получить всех пользователей'
+    // #swagger.security = [{ "bearerAuth": [] }]
 );
 
 userRouter.get(
@@ -28,6 +29,7 @@ userRouter.patch(
 	userController.updateUserById,
 	// #swagger.tags = ['Пользователи']
 	// #swagger.summary = 'Редактировать пользователя по ID'
+    // #swagger.security = [{ "bearerAuth": [] }]
 );
 
 export default userRouter;

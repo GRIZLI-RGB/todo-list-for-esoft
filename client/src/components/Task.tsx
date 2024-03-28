@@ -1,6 +1,8 @@
 import { TimeIcon } from "@chakra-ui/icons";
 import { Box, Text, Badge, Flex, Card, CardBody, Heading } from "@chakra-ui/react";
 
+import { TTask } from "../utils/types";
+
 const PRIORITY_COLORS = { high: "#E53E3E", medium: "#D69E2E", low: "#38A169" };
 
 const STATUS_TEXT = {
@@ -12,17 +14,18 @@ const STATUS_TEXT = {
 
 const STATUS_COLOR_SCHEMES = { completed: "green", in_progress: "orange", to_be_executed: "gray", canceled: "red" };
 
-interface ITask {
-	title: string;
-	description: string;
-	dueDate: Date;
-	priority: "high" | "medium" | "low";
-	status: "completed" | "in_progress" | "to_be_executed" | "canceled";
-}
-
-export default function Task({ title, priority, dueDate, status, description }: ITask) {
+export default function Task({
+	id,
+	title,
+	priority,
+	due_date,
+	status,
+	description,
+	onClick,
+}: TTask & { onClick: (id: number) => void }) {
 	return (
 		<Card
+			onClick={() => onClick(id)}
 			variant={"outline"}
 			cursor={"pointer"}
 			_hover={{ borderColor: "rgba(53,53,53,60%)" }}
@@ -38,7 +41,8 @@ export default function Task({ title, priority, dueDate, status, description }: 
 							color={
 								status === "completed"
 									? "#38A169"
-									: new Date() > new Date(new Date(dueDate).setDate(new Date(dueDate).getDate() + 1))
+									: (due_date && new Date()) >
+									new Date(new Date(due_date).setDate(new Date(due_date).getDate() + 1))
 									? "#E53E3E"
 									: "#353535"
 							}
@@ -76,9 +80,11 @@ export default function Task({ title, priority, dueDate, status, description }: 
 							)}
 						</Box>
 					</Flex>
-					<Flex align="center" gap={1.5}>
-						<TimeIcon /> <Text>{new Date(dueDate).toLocaleDateString()}</Text>
-					</Flex>
+					{due_date && (
+						<Flex align="center" gap={1.5}>
+							<TimeIcon /> <Text>{new Date(due_date).toLocaleDateString()}</Text>
+						</Flex>
+					)}
 				</Flex>
 			</CardBody>
 		</Card>

@@ -9,6 +9,8 @@ export type TUser = {
 	is_manager: boolean;
 	createdAt: Date;
 	updatedAt: Date;
+    accountable_tasks: TTask[]
+    created_tasks: TTask[]
 };
 
 export type TTask = {

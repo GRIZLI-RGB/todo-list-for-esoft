@@ -11,6 +11,14 @@ const doc = {
 		description: "Пасхалка для компании E-Soft: прочитал, улыбнись :)",
 	},
 	host: "localhost:8000/api",
+	components: {
+		securitySchemes: {
+			bearerAuth: {
+				type: "http",
+				scheme: "bearer",
+			},
+		},
+	},
 };
 
 const options = {

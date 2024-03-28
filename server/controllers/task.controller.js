@@ -1,8 +1,14 @@
 import Task from "./../models/task.model.js";
+import User from "./../models/user.model.js";
 
 const getAllTasks = async (req, res) => {
 	try {
-		const tasks = await Task.findAll();
+		const tasks = await Task.findAll({
+			include: [
+				{ model: User, as: "creator" },
+				{ model: User, as: "accountable" },
+			],
+		});
 		return res.json(tasks);
 	} catch (error) {
 		return res.status(500).json({ error: error.message });
@@ -13,7 +19,12 @@ const getTaskById = async (req, res) => {
 	const taskId = req.params.id;
 
 	try {
-		const task = await Task.findByPk(taskId);
+		const task = await Task.findByPk(taskId, {
+			include: [
+				{ model: User, as: "creator" },
+				{ model: User, as: "accountable" },
+			],
+		});
 		if (!task) {
 			return res.status(404).json({ message: "Task not found" });
 		}
@@ -34,7 +45,7 @@ const createTask = async (req, res) => {
 			due_date,
 			priority,
 			creator_id: userId,
-			accountable_id
+			accountable_id,
 		});
 
 		return res.status(201).json(newTask.toJSON());
